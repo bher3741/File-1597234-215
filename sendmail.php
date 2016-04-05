@@ -29,20 +29,20 @@
   header('Content-type: application/json');
   //attempt to send email
   $messageBody = constructMessageBody();
-  require './vender/php_mailer/PHPMailerAutoload.php';
+  require 'library/vender/php_mailer/PHPMailerAutoload.php';
   $mail = new PHPMailer;
   $mail->CharSet = 'UTF-8';
   $mail->isSMTP();
-  $mail->Host = "stmp.zoominternet.net");
+  $mail->Host = 'relay-hosting.secureserver.net';
   $mail->SMTPAuth = true;
-  $mail->Username = "crossingsofwexford@zoominternet.net";
-  $mail->Password = "Crossings1";
+  $mail->Username = 'username';
+  $mail->Password = 'password';
   
   $mail->SMTPSecure = 'tls';
-  $mail->Port = 587;
+  $mail->Port = 25;
   
   $mail->setFrom($_POST['email'], $_POST['firstname']);
-  $mail->addAddress("crossingsofwexford@zoominternet.net");
+  $mail->addAddress('crossingsofwexford@zoominternet.net');
   $mail->Subject = $_POST['reason'];
   $mail->Body  = $messageBody;
 
